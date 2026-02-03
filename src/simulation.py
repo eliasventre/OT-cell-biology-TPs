@@ -115,7 +115,7 @@ def grad_potential(x, t, well_separation=2.5, speed=7):
 
 
 def simulate_sde(
-    n_particles=1000,
+    n_particles=100*np.ones(6),
     dim=2,
     t0=0.0,
     t1=1.0,
@@ -154,20 +154,16 @@ def simulate_sde(
     rng = np.random.default_rng(seed)
 
     if snapshot_times is None:
-        snapshot_times = np.linspace(t0, t1, 5)
+        snapshot_times = np.linspace(t0, t1, len(n_particles))
 
     snapshot_times = np.array(snapshot_times)
     snapshots = {}
 
-    n_steps = int((t1 - t0) / dt)
-    times = np.linspace(t0, t1, n_steps + 1)
-
     # Initial condition: centered Gaussian
 
     for snapshot_idx, time in enumerate(snapshot_times):
-        print(time)
         t = t0
-        X = rng.normal(0.0, 0.5, size=(n_particles, dim))
+        X = rng.normal(0.0, 0.5, size=(n_particles[snapshot_idx], dim))
         while t <= time:
             if np.isclose(t, snapshot_times[snapshot_idx], atol=dt):
                 snapshots[snapshot_times[snapshot_idx]] = X.copy()
