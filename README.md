@@ -1,5 +1,6 @@
 # OT-cell-biology-TPs
 Practical session 1 — Entropic Optimal Transport for trajectory inference in single-cell biology
+
 Practical session 2 — Optimizing on discrete measures for trajectory inference in single-cell biology
 
 This repository contains the material for the first practical session
