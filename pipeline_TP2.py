@@ -20,7 +20,7 @@ import sys
 sys.path.append('./src')
 from simulation import simulate_sde
 from functions import distribution_distance
-from models_gwot_correction import TrajLoss, optimize_model
+from models_gwot import TrajLoss, optimize_model
 
 
 plt.rcParams["figure.figsize"] = (10, 4)
